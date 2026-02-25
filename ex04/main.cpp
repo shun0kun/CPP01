@@ -1,23 +1,19 @@
 #include <fstream>
 #include <iostream>
 #include <string>
+#include <iterator>
 
 std::string	getFileContent( std::istream &file )
 {
-	std::string	content;
-
-	char	c;
-	while ( file.get(c) )
-	{
-		content += c;
-	}
-	return content;
+	return std::string(std::istreambuf_iterator<char>(file), std::istreambuf_iterator<char>());
 }
 
 void	replace( std::string &content, const std::string &s1, const std::string &s2 )
 {
 	size_t	pos;
 
+	if (s1.empty())
+		return ;
 	pos = 0;
 	while ( true )
 	{
@@ -36,25 +32,24 @@ int	main( int argc, char **argv )
 		return 1;
 
 	std::ifstream	in( argv[1] );
-	if ( !in )
+	if ( !in.is_open() )
 	{
 		std::cerr << argv[1] << ": file open failed" << std::endl;
 		return 1;
 	}
-	std::string	content = getFileContent( in );
-	in.close();
 
-	replace(content, argv[2], argv[3]);
+	std::string	content = getFileContent( in );
+	replace( content, argv[2], argv[3] );
 	
 	std::string	out_name = std::string( argv[1] ) + ".replace";
 	std::ofstream	out( out_name.c_str() );
-	if (!out)
+	if ( !out.is_open() )
 	{
-		std::cerr << argv[1] << ": file open failed" << std::endl;
+		std::cerr << out_name << ": file open failed" << std::endl;
 		return 1;		
 	}
+
 	out << content;
-	out.close();
 
 	return 0;
 }
