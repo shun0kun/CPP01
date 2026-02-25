@@ -5,6 +5,7 @@
 int	main( int argc, char **argv )
 {
 	static const std::string	levels[] = { "DEBUG", "INFO", "WARNING", "ERROR" };
+	static const int			n_levels = sizeof( levels ) / sizeof( levels[0] );
 
 	if ( argc != 2 )
 	{
@@ -14,7 +15,7 @@ int	main( int argc, char **argv )
 
 	int	i = 0;
 	std::string	input( argv[1] );
-	while ( i < 4 )
+	while ( i < n_levels )
 	{
 		if ( levels[i] == input )
 			break ;
