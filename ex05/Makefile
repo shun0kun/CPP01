@@ -1,6 +1,6 @@
 NAME = harl
-CXX = g++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
+CXX = c++
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic-error
 SRCS = Harl.cpp main.cpp
 OBJS = $(SRCS:.cpp=.o)
 

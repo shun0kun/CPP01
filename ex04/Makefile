@@ -1,6 +1,6 @@
 NAME = replace
-CXX = g++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
+CXX = c++
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic-error
 SRCS = main.cpp
 OBJS = $(SRCS:.cpp=.o)
 
