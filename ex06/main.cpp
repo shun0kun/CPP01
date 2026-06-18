@@ -27,13 +27,10 @@ int	main( int argc, char **argv )
 	{
 		case 0:
 			harl.complain( levels[0] );
-			// fall through
 		case 1:
 			harl.complain( levels[1] );
-			// fall through
 		case 2:
 			harl.complain( levels[2] );
-			// fall through
 		case 3:
 			harl.complain( levels[3] );
 			break ;
